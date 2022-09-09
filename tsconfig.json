@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "outDir": "./dist/",
+    "target": "ES2015",
+    "jsx": "react"
+  }
+}
+
+//tsファイルがないというエラー
+// 構成ファイル '//wsl.localhost/Ubuntu/home/osho210/codevillage/react-next/markdown-editor/tsconfig.json' で入力が見つかりませんでした。指定された 'include' パスは '["**/*"]' で、'exclude' パスは '["./dist/"]' でした。
