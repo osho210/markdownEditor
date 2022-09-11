@@ -6,7 +6,7 @@ const Header = styled.h1`
   color: red;
 `
 
-const Main =(<Header>Markdown Editor</Header>)
+const Main =(<Header>Markdown Editorooo</Header>)
 
 //画面を描写する
 render(Main,document.getElementById('app'))
