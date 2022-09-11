@@ -7,7 +7,7 @@ module.exports = {
     rules: [
       {
         //拡張子がtsの場合ts-loaderを実行する
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         use: "ts-loader",
         //除外するファイル
         exclude: /node_modules/,
