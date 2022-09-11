@@ -9005,7 +9005,7 @@
   (() => {
     var e = t(294),
       n = t(935);
-    const r = e.createElement("h1", null, "Markdown Editor");
+    const r = e.createElement("h1", null, "Markdow");
     (0, n.render)(r, document.getElementById("app"));
   })();
 })();
