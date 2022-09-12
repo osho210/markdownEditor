@@ -20,7 +20,6 @@ const Main: React.FC = () => {
   //dbの引数が分からない
   const [text, setText] = useStateWithStorage('', StorageKey)
   return (
-    //test
     <>
       <GlobalStyle />
       <Router>
