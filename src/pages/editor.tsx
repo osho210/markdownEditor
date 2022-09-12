@@ -56,7 +56,6 @@ const Preview = styled.div`
 export const Editor: React.FC = () => {
   const [text, setText] = useStateWithStorage('', StorageKey)
   const [showModal, setShowModal] = useState(false)
-
   //itemの値が格納されていない場合はnullが返却されるので空文字を返却するように
   return (
     <>
