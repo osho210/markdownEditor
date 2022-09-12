@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom'
 import { Header } from '../components/header'
 
 const { useState } = React
-
-//データの参照の際に使用するlocalstorage
-const StorageKey = 'pages/editor:text'
+interface Props {
+  text: string
+  setText: (text: string) => void
+}
 
 const Wrapper = styled.div`
   bottom: 0;
@@ -53,8 +54,8 @@ const Preview = styled.div`
 //Editor <- React.FCという型、Reactのコンポーネントを返却する
 // Jsxで<Editor>という形式で呼び出すことができる
 //localstorageの初期値にstorangeKeyを設定する
-export const Editor: React.FC = () => {
-  const [text, setText] = useStateWithStorage('', StorageKey)
+export const Editor: React.FC<Props> = (props) => {
+  const { text, setText } = props
   const [showModal, setShowModal] = useState(false)
   //itemの値が格納されていない場合はnullが返却されるので空文字を返却するように
   return (

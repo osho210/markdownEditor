@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components'
 import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Editor } from './pages/editor'
 import { History } from './pages/history'
+import { useStateWithStorage } from './hooks/use_state_with_storage'
 
 const GlobalStyle = createGlobalStyle`
    body * {
@@ -13,25 +14,31 @@ const GlobalStyle = createGlobalStyle`
    }
  `
 
-const Main = (
-  <>
-    <GlobalStyle />
-    {/* ルーティングの範囲を定義 Router外は対象外 */}
-    <Router>
-      {/* exactは完全一致 */}
-      <Route exact path={'/editor'}>
-        <Editor />
-      </Route>
-      <Route exact path="/history">
-        <History />
-      </Route>
-      <Redirect to="/editor" path="*" />
-    </Router>
-  </>
-)
+const StorageKey = '/editor:text'
+
+const Main: React.FC = () => {
+  //dbの引数が分からない
+  const [text, setText] = useStateWithStorage('', StorageKey)
+  return (
+    <>
+      <GlobalStyle />
+      <Router>
+        <Switch>
+          <Route exact path="/editor">
+            <Editor text={text} setText={setText} />
+          </Route>
+          <Route exact path="/history">
+            <History setText={setText} />
+          </Route>
+          <Redirect to="/editor" path="*" />
+        </Switch>
+      </Router>
+    </>
+  )
+}
 
 //画面を描写する
-render(Main, document.getElementById('app'))
+render(<Main />, document.getElementById('app'))
 
 //props.children -> 子要素の値を取得できる
 //イベントの発生->状態の更新->画面の更新->イベントの発生
