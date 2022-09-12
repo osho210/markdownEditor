@@ -17,7 +17,7 @@ module.exports = {
   //解決するファイルの拡張子
   resolve: {
     //tsx = ts + jsx を使用できる
-    extensions: [".js", ".ts", "tsx"],
+    extensions: [".js", ".ts", ".tsx"],
   },
 
   output: {
