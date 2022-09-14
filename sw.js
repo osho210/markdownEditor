@@ -5,6 +5,10 @@ self.addEventListener("install", (event) => {
   console.log("ServiceWorker install", event);
 });
 
+self.addEventListener("active", (event) => {
+  console.log("ServiceWorker active", event);
+});
+
 const networkFallingBackToCache = async (request) => {
   const cache = await caches.open(CacheName);
   try {
@@ -17,9 +21,6 @@ const networkFallingBackToCache = async (request) => {
   }
 };
 
-self.addEventListener("active", (event) => {
-  console.log("ServiceWorker active", event);
-});
 
 //イベント時に実行する処理
 // ネットワークを経由してリソースを取得するためのAPI
