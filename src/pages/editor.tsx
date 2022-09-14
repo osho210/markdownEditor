@@ -1,14 +1,16 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { useStateWithStorage } from '../hooks/use_state_with_storage'
-import ReactMarkdown from 'react-markdown'
 import { putMemo } from '../indexddb/memos'
 import { Button } from '../components/button'
 import { SaveModal } from '../components/save_modal'
 import { Link } from 'react-router-dom'
 import { Header } from '../components/header'
+//Workerの読み込みパスの型宣言
+import ConvertMarkdownWorker from 'worker-loader!../worker/convert_markdown_worker'
 
-const { useState } = React
+const convertMarkdownWorker = new ConvertMarkdownWorker()
+const { useState, useEffect } = React
 interface Props {
   text: string
   setText: (text: string) => void
@@ -57,6 +59,16 @@ const Preview = styled.div`
 export const Editor: React.FC<Props> = (props) => {
   const { text, setText } = props
   const [showModal, setShowModal] = useState(false)
+  const [html, setHtml] = useState('')
+
+  useEffect(() => {
+    convertMarkdownWorker.onmessage = (event) => {
+      setHtml(event.data.html)
+    }
+  }, [])
+
+  useEffect(() => convertMarkdownWorker.postMessage(text))
+
   //itemの値が格納されていない場合はnullが返却されるので空文字を返却するように
   return (
     <>
@@ -75,7 +87,7 @@ export const Editor: React.FC<Props> = (props) => {
         />
         <Preview>
           {/* 子要素を取得する必要がある */}
-          <ReactMarkdown children={text} />
+          <div dangerouslySetInnerHTML={{ __html: html }} />
         </Preview>
       </Wrapper>
 

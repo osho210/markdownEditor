@@ -8,5 +8,26 @@
   <body>
     <div id="app"></div>
     <script src="./dist/index.js"></script>
+    <script type="text/javascript">
+      //ブラウザにサービスワーカーが実装しているか
+      if ("serviceWorker" in navigator) {
+        //ウィンドウがロードされたタイミングでリロード
+        window.addEventListener("load", () => {
+          //サービスワーカーのパスregister()
+          navigator.serviceWorker.register("./sw.js").then(
+            (registration) => {
+              console.log(
+                "ServiceWorker registration successful with scope: ",
+                //サービスワーカーのスコープ(デフォルトで使用できるもの)
+                registration.scope
+              );
+            },
+            (err) => {
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
+        });
+      }
+    </script>
   </body>
 </html>
