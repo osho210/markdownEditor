@@ -21,9 +21,9 @@ const networkFallingBackToCache = async (request) => {
   }
 };
 
-
 //イベント時に実行する処理
 // ネットワークを経由してリソースを取得するためのAPI
 self.addEventListener("fetch", (event) => {
+  console.log("Fetch to:", event.request.url);
   event.respondWith(networkFallingBackToCache(event.request));
 });
