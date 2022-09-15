@@ -27,3 +27,5 @@ self.addEventListener("fetch", (event) => {
   console.log("Fetch to:", event.request.url);
   event.respondWith(networkFallingBackToCache(event.request));
 });
+
+//test
