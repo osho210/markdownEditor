@@ -1,10 +1,10 @@
 {
   "manifest_version": "2",
-  "version": "0.10",
+  "version": "0.1.0",
   "name": "MarkdownEditor",
   "icons": [
     {
-      "scr": "f_f_business_1_s512_f_business_1_0bg.png",
+      "src": "./image/f_f_business_1_s512_f_business_1_0bg.png",
       "sizes": "512x512",
       "type": "image/png"
     }
