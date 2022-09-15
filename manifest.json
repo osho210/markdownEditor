@@ -1,0 +1,15 @@
+{
+  "manifest_version": "2",
+  "version": "0.10",
+  "name": "MarkdownEditor",
+  "icons": [
+    {
+      "scr": "f_f_business_1_s512_f_business_1_0bg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000099"
+}
